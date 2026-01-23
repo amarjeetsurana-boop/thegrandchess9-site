@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TheGrandChess9 – Official</title>
+
+<style>
+:root{
+  --bg-dark:#bfc7db;
+  --bg-panel:#1e293b;
+  --gold:#b08d2f;
+  --gold-light:#f0d797;
+  --text:#f8fafc;
+  --muted:#c5d2e3;
+}
+
+html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:var(--bg-dark);
+  color:var(--text);
+  font-family:Segoe UI,sans-serif;
+  line-height:1.6;
+}
+
+.container{max-width:1200px;margin:auto;padding:0 20px}
+section{padding:60px 0}
+
+/* ===== HEADER ===== */
+header{
+  background:linear-gradient(180deg,#24324a,#0f172a);
+  border-bottom:8px solid var(--gold);
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+.nav{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:46px;height:46px}
+.brand span{
+  color:#ffd700;
+  text-shadow:0 0 12px rgba(255,215,0,.6);
+}
+nav a{
+  color:var(--muted);
+  margin-left:40px;
+  text-decoration:none;
+}
+nav a:hover{color:var(--gold-light)}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:40vh;
+  background:
+    linear-gradient(rgba(115,23,32,.55),rgba(15,23,82,.65)),
+    url("img/BACKGROUND02.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  text-align:center;
+}
+
+/* ===== HERO GLASS BOX ===== */
+.hero-box{
+  background:rgba(15,23,42,.55);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(176,141,47,.35);
+  border-radius:22px;
+  padding:70px 30px;
+  max-width:1100px;
+  margin:auto;
+  animation:fadeUp 1.2s ease forwards;
+}
+
+/* ===== HERO LOGO ===== */
+.hero-logo{
+  width:180px;
+  display:block;
+  margin:0 auto 10px;
+  animation:glow 1.0s ease-in-out infinite;
+}
+
+/* ===== HERO TITLE ===== */
+.hero-title{
+  font-size:2rem;
+  color:var(--gold);
+  text-shadow:0 6px 22px rgba(0,0,0,.7);
+  margin-bottom:15px;
+}
+
+/* ===== HERO TAGLINE ===== */
+.hero-tagline{
+  font-size:1.65rem;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* ===== PLAY BUTTON ===== */
+.play-btn{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:30px;
+  border:2px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s ease;
+}
+.play-btn:hover{
+  background:var(--gold);
+  color:#000;
+  transform:scale(1.06);
+}
+
+/* ===== FEATURES ===== */
+.title{
+  text-align:center;
+  font-size:4rem;
+  color:var(--gold);
+  margin-bottom:40px;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--bg-panel);
+  padding:45px;
+  border-radius:20px;
+  border:1px solid rgba(176,141,47,.25);
+}
+.card h3{color:var(--gold);margin-bottom:10px}
+
+/* ===== PIECES ===== */
+.piece-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+  gap:40px;
+}
+.piece{
+  background:var(--bg-panel);
+  border-radius:12px;
+  overflow:hidden;
+}
+.piece-header{
+  background:var(--gold);
+  color:#000;
+  padding:15px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.piece-icon{width:48px;height:48px}
+.piece-body{padding:25px}
+.piece-body img,
+.piece-body video{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
+/* ===== COPYRIGHT ===== */
+.copyright{
+  background:#f8fafc;
+  color:#1e293b;
+}
+.copyright-box{
+  background:#fff;
+  padding:40px;
+  border-radius:10px;
+  border:2px solid #e2e8f0;
+}
+.row{display:flex;margin-bottom:12px}
+.label{width:260px;font-weight:600}
+.notice{
+  background:#fff1f2;
+  border-left:5px solid #dc2626;
+  padding:15px;
+  margin-top:20px;
+}
+
+/* ===== CONTACT & FOOTER ===== */
+.contact,
+footer{
+  background:#020617;
+  color:var(--muted);
+}
+footer{
+  text-align:center;
+  padding:25px 0;
+  border-top:1px solid #1e293b;
+}
+
+/* ===== PLAY FRAME ===== */
+.play-frame{
+  width:100%;
+  height:90vh;
+  min-height:900px;
+  border:12px solid var(--gold);
+  border-radius:12px;
+  background:#000;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes glow{
+  0%{filter:drop-shadow(0 0 6px rgba(176,141,47,.4))}
+  50%{filter:drop-shadow(0 0 20px rgba(214,180,90,.95))}
+  100%{filter:drop-shadow(0 0 6px rgba(176,141,47,.4))}
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .hero-title{font-size:2.2rem}
+  .hero-logo{width:90px}
+  .hero-box{padding:30px 20px}
+  .play-frame{
+    height:100vh;
+    min-height:100vh;
+    border-radius:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+<div class="container nav">
+  <div class="brand">
+    <img src="img/Logo.png">
+    <span>TheGrandChess9</span>
+  </div>
+  <nav>
+    <a href="#features">Features</a>
+    <a href="#pieces">Pieces</a>
+    <a href="#copyright">Copyright</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-box">
+
+      <img src="img/Logo.png" class="hero-logo" alt="TheGrandChess9 Logo">
+
+      <h1 class="hero-title">Welcome TheGrandChess9</h1>
+
+      <p>
+        <a href="#play" class="play-btn" id="playBtn">
+          ▶ Play TheGrandChess9
+        </a>
+      </p>
+
+      <p class="hero-tagline">
+        A next-generation chess variant redefining strategy and creativity.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PLAY GAME -->
+<section id="play">
+  <div class="container" style="text-align:center">
+
+    <!-- iframe wrapper -->
+    <div id="gameWrapper" style="display:none;">
+      <iframe
+        class="play-frame"
+        src="https://thegrandchess9-yfkl.onrender.com"
+        allow="fullscreen">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const playBtn = document.getElementById("playBtn");
+  const gameWrapper = document.getElementById("gameWrapper");
+
+  playBtn.addEventListener("click", function () {
+    gameWrapper.style.display = "block";
+
+    // smooth scroll to play section
+    document.getElementById("play").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+</script>
+
+<!-- FEATURES -->
+<section id="features">
+<div class="container">
+<h2 class="title">Game Features</h2>
+<div class="features">
+  <div class="card"><p style="text-align:justify;"> <h3>From 8×8 to 9×9: A New Dimension of Chess</h3><p>
+<p style="text-align:justify;">
+Expanding the chessboard from the traditional 8×8 to an innovative 9×9 layout marks a bold evolution in strategic thinking. This single-square extension may appear subtle at first glance, but it fundamentally transforms the dynamics of the game. The 9×9 board introduces an additional layer of depth, freedom, and complexity, encouraging players to think beyond conventional patterns and memorized openings.
+
+With an expanded battlefield, piece mobility increases significantly, allowing for more creative positioning and unconventional tactics. Central control becomes richer and more contested, while flanks offer new routes for attack and defense. Players are no longer confined to classical strategies; instead, they must adapt, improvise, and innovate in real time.
+
+The 9×9 board also creates space for unique new pieces and rules that would be impossible within the limits of the traditional board. It opens the door to fresh strategic concepts, balanced aggression, and deeper long-term planning. Each move carries greater weight, and every decision has broader consequences across the board.
+
+This evolution from 8×8 to 9×9 is not merely an expansion of space—it is an expansion of imagination. It preserves the soul of classical chess while elevating it into a modern, grand, and intellectually richer experience designed for players who seek challenge, creativity, and a new strategic frontier.</p></div>
+    <div class="card"><h3>Innovative Rules</h3>
+<p>
+<p style="text-align:justify;">
+Pre-Battle Strategy: 2 Pawn Placement 
+
+In TheGrandChess9, the 2 Pawn Placement system introduces a unique strategic phase before the game even begins. Under this rule, each player is granted special freedom prior to the start of play. The White player may place two pawns anywhere on Row 3, while the Black player may place two pawns anywhere on Row 7.
+
+This is not merely a setup rule—it is the first true test of a player’s strategic mind. Before a single move is made, the player must decide how to shape the battlefield. Whether the pawns are placed in the center for control, on the flanks for flexibility, or near the King for protection, this decision influences the entire course of the game.
+
+This phase represents a pre-war strategy, where foresight, balance, and tactical vision are revealed. A poor pawn placement can create early weaknesses, while a well-planned setup can provide long-term dominance and psychological advantage.
+
+Through this system, TheGrandChess9 transforms chess into more than a battle of moves—it becomes a game of planning, anticipation, and strategic mastery even before the first move is played.</p>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- PIECES -->
+<section id="pieces">
+<div class="container">
+<h2 class="title">New Chess Pieces</h2>
+
+<div class="piece-grid">
+
+  <div class="piece">
+    <div class="piece-header">
+      <img src="img/wc.png" class="piece-icon">
+      <span>CHARIOTEER</span>
+      <img src="img/bc.png" class="piece-icon">
+    </div>
+
+    <div class="piece-body">
+      <video controls src="img/Charioteer/SARTHI.mp4"></video>
+      <img src="img/Charioteer/SARTHI02.jpeg">
+      <p style="text-align:justify;">
+  <strong>The Charioteer</strong> is a divine guardian who serves as both charioteer and protective shield for the King from all sides. The Charioteer neither attacks anyone nor can anyone attack him. His sole purpose is to protect the King, forming an invisible circle of safety wherever the King stands. He exists not for battle, but to ensure the King’s security and stability. Because of this sacred role, the Charioteer becomes a unique symbol of divine protection, balance, and profound strategic depth within the game.
+</p>
+    </div>
+  </div>
+
+  <div class="piece">
+    <div class="piece-header">
+      <img src="img/ws.png" class="piece-icon">
+      <span>SCEPTRE</span>
+      <img src="img/bs.png" class="piece-icon">
+    </div>
+
+    <div class="piece-body">
+      <video controls src="MyGame/video/sceptre.mp4"></video>
+      <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos).:</strong> </p>
+<img src="img/sceptre/nandi01.jpg">
+      <p class="justify-text">
+  <strong>The Sceptre:</strong> considered in the form of a Sangul or royal staff, will be the most powerful piece in the game, holding the combined abilities of the Airavat, Bishop, and Knight. It will be a true game changer, as its movements are exceptional, multi-dimensional, and strategically highly impactful. The Sceptre emerges as a symbol of power, dignity, and extraordinary tactical capability, elevating the entire gameplay to a new and majestic level. Combines Rook + Bishop + Knight powers.
+</p>
+    </div>
+  </div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- COPYRIGHT -->
+<section id="copyright" class="copyright">
+<div class="container">
+<h2 class="title" style="color:#0f172a">Copyright & Legal</h2>
+
+<div class="copyright-box">
+  <div class="row"><div class="label">Project Name:</div>TheGrandChess9</div>
+  <div class="row"><div class="label">Owner:</div>Jitendra Kumar Surana</div>
+  <div class="row"><div class="label">Year:</div>2025</div>
+  <div class="row"><div class="label">Rights:</div>All game rules, pieces, UI, logic & branding are protected.</div>
+
+  <p><strong>© 2025 Jitendra Kumar Surana. All Rights Reserved.</strong></p>
+
+  <div class="notice">
+    Unauthorized copying, distribution or commercial use without written permission
+    is strictly prohibited and may lead to legal action.
+  </div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<div class="container">
+<h3>Contact Information</h3>
+<p>📧 Email: amarjeetsurana@gmail.com</p>
+<p>📞 Phone: +91-6260314913</p>
+<p>📍 Location: Vidisha, Madhya Pradesh, India</p>
+</div>
+</section>
+
+<!-- DISCLAIMER -->
+<section id="Disclaimer" class="Disclaimer">
+<div class="container">
+<h3>DISCLAIMER</h3>
+<p style="text-align:justify;">This game is created solely for entertainment, skill development, and strategic experience. All rules, characters, pieces, and concepts used in TheGrandChess9 are entirely fictional, creative, and based on the developers’ imagination. It is not intended to disrespect, misrepresent, or make inappropriate comparisons to any real historical, religious, or cultural symbols. Users engage with the game at their own discretion, and the developers shall not be responsible for any kind of damage, misuse, or technical issues. The overall gameplay experience may vary depending on personal preferences.</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>Developed by Jitendra Kumar Surana & Rishabh Jain</p>
+<p>© 2025 TheGrandChess9</p>
+</footer>
+
+</body>
+</html>
