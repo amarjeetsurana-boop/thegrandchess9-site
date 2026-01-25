@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>TheGrandChess9 – Official</title>
 
 <style>
@@ -15,18 +15,21 @@
   --muted:#c5d2e3;
 }
 
-html{scroll-behavior:smooth}
-*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
 body{
   background:var(--bg-dark);
   color:var(--text);
   font-family:Segoe UI,sans-serif;
   line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
 .container{max-width:1200px;margin:auto;padding:0 20px}
-section{padding:60px 0}
+section{padding:40px 0}
 
 /* ===== HEADER ===== */
 header{
@@ -45,8 +48,9 @@ header{
 }
 nav a{
   color:var(--muted);
-  margin-left:40px;
+  margin-left:20px;
   text-decoration:none;
+  font-size:14px;
 }
 nav a:hover{color:var(--gold-light)}
 
@@ -64,10 +68,9 @@ nav a:hover{color:var(--gold-light)}
 /* ===== HERO GLASS BOX ===== */
 .hero-box{
   background:rgba(15,23,42,.55);
-  backdrop-filter:blur(12px);
   border:1px solid rgba(176,141,47,.35);
   border-radius:22px;
-  padding:70px 30px;
+  padding:30px 20px;
   max-width:1100px;
   margin:auto;
   animation:fadeUp 1.2s ease forwards;
@@ -75,7 +78,7 @@ nav a:hover{color:var(--gold-light)}
 
 /* ===== HERO LOGO ===== */
 .hero-logo{
-  width:180px;
+  width:120px;
   display:block;
   margin:0 auto 10px;
   animation:glow 1.0s ease-in-out infinite;
@@ -83,7 +86,7 @@ nav a:hover{color:var(--gold-light)}
 
 /* ===== HERO TITLE ===== */
 .hero-title{
-  font-size:2rem;
+  font-size:1.8rem;
   color:var(--gold);
   text-shadow:0 6px 22px rgba(0,0,0,.7);
   margin-bottom:15px;
@@ -91,7 +94,7 @@ nav a:hover{color:var(--gold-light)}
 
 /* ===== HERO TAGLINE ===== */
 .hero-tagline{
-  font-size:1.65rem;
+  font-size:1.2rem;
   color:var(--muted);
   line-height:1.6;
 }
@@ -106,6 +109,8 @@ nav a:hover{color:var(--gold-light)}
   text-decoration:none;
   font-weight:600;
   transition:.3s ease;
+  margin:15px 0;
+  touch-action:manipulation;
 }
 .play-btn:hover{
   background:var(--gold);
@@ -116,35 +121,40 @@ nav a:hover{color:var(--gold-light)}
 /* ===== FEATURES ===== */
 .title{
   text-align:center;
-  font-size:4rem;
+  font-size:2.5rem;
   color:var(--gold);
   margin-bottom:40px;
 }
 
 .features{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
 }
 
 .card{
   background:var(--bg-panel);
-  padding:45px;
+  padding:25px;
   border-radius:20px;
   border:1px solid rgba(176,141,47,.25);
+  transform:translateZ(0);
 }
 .card h3{color:var(--gold);margin-bottom:10px}
 
-/* ===== PIECES ===== */
+/* ===== PIECES - UPDATED ===== */
 .piece-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); /* ← Left-Right layout */
+  gap:30px;
+  align-items:start; /* ← Align pieces at top */
 }
 .piece{
   background:var(--bg-panel);
   border-radius:12px;
   overflow:hidden;
+  height:100%; /* ← Equal height for both pieces */
+  display:flex;
+  flex-direction:column;
 }
 .piece-header{
   background:var(--gold);
@@ -155,14 +165,25 @@ nav a:hover{color:var(--gold-light)}
   align-items:center;
   justify-content:center;
   gap:10px;
+  flex-shrink:0; /* ← Prevent header from shrinking */
 }
-.piece-icon{width:48px;height:48px}
-.piece-body{padding:25px}
+.piece-icon{width:40px;height:40px}
+.piece-body{
+  padding:20px;
+  flex:1; /* ← Body takes remaining space */
+  display:flex;
+  flex-direction:column;
+}
 .piece-body img,
 .piece-body video{
   width:100%;
   border-radius:8px;
   margin-bottom:15px;
+  max-height:300px;
+  object-fit:cover;
+}
+.piece-body p{
+  flex:1; /* ← Text takes remaining space */
 }
 
 /* ===== COPYRIGHT ===== */
@@ -172,12 +193,12 @@ nav a:hover{color:var(--gold-light)}
 }
 .copyright-box{
   background:#fff;
-  padding:40px;
+  padding:25px;
   border-radius:10px;
   border:2px solid #e2e8f0;
 }
-.row{display:flex;margin-bottom:12px}
-.label{width:260px;font-weight:600}
+.row{display:flex;margin-bottom:12px;flex-wrap:wrap}
+.label{width:200px;font-weight:600;min-width:150px}
 .notice{
   background:#fff1f2;
   border-left:5px solid #dc2626;
@@ -200,11 +221,13 @@ footer{
 /* ===== PLAY FRAME ===== */
 .play-frame{
   width:100%;
-  height:90vh;
-  min-height:900px;
-  border:12px solid var(--gold);
+  height:85vh; /* ← Increased height */
+  min-height:900px; /* ← Increased min-height */
+  max-height:1100px;
+  border:8px solid var(--gold);
   border-radius:12px;
   background:#000;
+  transform:translateZ(0);
 }
 
 /* ===== ANIMATIONS ===== */
@@ -219,16 +242,46 @@ footer{
   to{opacity:1;transform:translateY(0)}
 }
 
-/* ===== MOBILE ===== */
-@media(max-width:768px){
-  .hero-title{font-size:2.2rem}
-  .hero-logo{width:90px}
-  .hero-box{padding:30px 20px}
-  .play-frame{
-    height:100vh;
-    min-height:100vh;
-    border-radius:0;
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:900px){ /* ← Pieces stack vertically */
+  .piece-grid{
+    grid-template-columns:1fr;
+    gap:25px;
   }
+}
+
+@media(max-width:768px){
+  .nav{flex-direction:column;gap:10px}
+  nav{display:flex;justify-content:center;flex-wrap:wrap}
+  nav a{margin:5px 10px}
+  
+  .hero-title{font-size:1.5rem}
+  .hero-logo{width:80px}
+  .hero-box{padding:20px 15px}
+  
+  .title{font-size:2rem}
+  
+  .play-frame{
+    height:80vh; /* ← Mobile height */
+    min-height:550px;
+    border-radius:0;
+    border-width:4px;
+  }
+  
+  .card{padding:20px}
+  .piece-body{padding:15px}
+  
+  .row{flex-direction:column}
+  .label{width:100%;margin-bottom:5px}
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 </style>
 </head>
@@ -239,7 +292,7 @@ footer{
 <header>
 <div class="container nav">
   <div class="brand">
-    <img src="img/Logo.png">
+    <img src="img/Logo.png" alt="TheGrandChess9 Logo">
     <span>TheGrandChess9</span>
   </div>
   <nav>
@@ -254,75 +307,55 @@ footer{
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-
     <div class="hero-box">
-
       <img src="img/Logo.png" class="hero-logo" alt="TheGrandChess9 Logo">
-
       <h1 class="hero-title">Welcome TheGrandChess9</h1>
-
       <p>
         <a href="#play" class="play-btn" id="playBtn">
           ▶ Play TheGrandChess9
         </a>
       </p>
-
       <p class="hero-tagline">
         A next-generation chess variant redefining strategy and creativity.
       </p>
-
     </div>
-
   </div>
 </section>
 
 <!-- PLAY GAME -->
 <section id="play">
   <div class="container" style="text-align:center">
-
     <!-- iframe wrapper -->
     <div id="gameWrapper" style="display:none;">
       <iframe
         class="play-frame"
         src="https://thegrandchess9-yfkl.onrender.com"
-        allow="fullscreen">
+        allow="fullscreen"
+        loading="lazy">
       </iframe>
     </div>
-
   </div>
 </section>
-
-<script>
-  const playBtn = document.getElementById("playBtn");
-  const gameWrapper = document.getElementById("gameWrapper");
-
-  playBtn.addEventListener("click", function () {
-    gameWrapper.style.display = "block";
-
-    // smooth scroll to play section
-    document.getElementById("play").scrollIntoView({
-      behavior: "smooth"
-    });
-  });
-</script>
 
 <!-- FEATURES -->
 <section id="features">
 <div class="container">
 <h2 class="title">Game Features</h2>
 <div class="features">
-  <div class="card"><p style="text-align:justify;"> <h3>From 8×8 to 9×9: A New Dimension of Chess</h3><p>
-<p style="text-align:justify;">
+  <div class="card">
+    <h3>From 8×8 to 9×9: A New Dimension</h3>
+    <p style="text-align:justify;">
 Expanding the chessboard from the traditional 8×8 to an innovative 9×9 layout marks a bold evolution in strategic thinking. This single-square extension may appear subtle at first glance, but it fundamentally transforms the dynamics of the game. The 9×9 board introduces an additional layer of depth, freedom, and complexity, encouraging players to think beyond conventional patterns and memorized openings.
 
 With an expanded battlefield, piece mobility increases significantly, allowing for more creative positioning and unconventional tactics. Central control becomes richer and more contested, while flanks offer new routes for attack and defense. Players are no longer confined to classical strategies; instead, they must adapt, improvise, and innovate in real time.
 
 The 9×9 board also creates space for unique new pieces and rules that would be impossible within the limits of the traditional board. It opens the door to fresh strategic concepts, balanced aggression, and deeper long-term planning. Each move carries greater weight, and every decision has broader consequences across the board.
 
-This evolution from 8×8 to 9×9 is not merely an expansion of space—it is an expansion of imagination. It preserves the soul of classical chess while elevating it into a modern, grand, and intellectually richer experience designed for players who seek challenge, creativity, and a new strategic frontier.</p></div>
-    <div class="card"><h3>Innovative Rules</h3>
-<p>
-<p style="text-align:justify;">
+This evolution from 8×8 to 9×9 is not merely an expansion of space—it is an expansion of imagination. It preserves the soul of classical chess while elevating it into a modern, grand, and intellectually richer experience designed for players who seek challenge, creativity, and a new strategic frontier.</p>
+  </div>
+  <div class="card">
+    <h3>Innovative Rules</h3>
+    <p style="text-align:justify;">
 Pre-Battle Strategy: 2 Pawn Placement 
 
 In TheGrandChess9, the 2 Pawn Placement system introduces a unique strategic phase before the game even begins. Under this rule, each player is granted special freedom prior to the start of play. The White player may place two pawns anywhere on Row 3, while the Black player may place two pawns anywhere on Row 7.
@@ -332,8 +365,7 @@ This is not merely a setup rule—it is the first true test of a player’s stra
 This phase represents a pre-war strategy, where foresight, balance, and tactical vision are revealed. A poor pawn placement can create early weaknesses, while a well-planned setup can provide long-term dominance and psychological advantage.
 
 Through this system, TheGrandChess9 transforms chess into more than a battle of moves—it becomes a game of planning, anticipation, and strategic mastery even before the first move is played.</p>
-
-</div>
+  </div>
 </div>
 </div>
 </section>
@@ -344,17 +376,15 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 <h2 class="title">New Chess Pieces</h2>
 
 <div class="piece-grid">
-
   <div class="piece">
     <div class="piece-header">
-      <img src="img/wc.png" class="piece-icon">
+      <img src="img/wc.png" class="piece-icon" alt="White Charioteer">
       <span>CHARIOTEER</span>
-      <img src="img/bc.png" class="piece-icon">
+      <img src="img/bc.png" class="piece-icon" alt="Black Charioteer">
     </div>
-
     <div class="piece-body">
-      <video controls src="img/Charioteer/SARTHI.mp4"></video>
-      <img src="img/Charioteer/SARTHI02.jpeg">
+      <video controls src="img/SARTHI.mp4" preload="none"></video>
+      <img src="img/SARTHI02.jpeg" alt="Charioteer" loading="lazy">
       <p style="text-align:justify;">
   <strong>The Charioteer</strong> is a divine guardian who serves as both charioteer and protective shield for the King from all sides. The Charioteer neither attacks anyone nor can anyone attack him. His sole purpose is to protect the King, forming an invisible circle of safety wherever the King stands. He exists not for battle, but to ensure the King’s security and stability. Because of this sacred role, the Charioteer becomes a unique symbol of divine protection, balance, and profound strategic depth within the game.
 </p>
@@ -363,23 +393,19 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 
   <div class="piece">
     <div class="piece-header">
-      <img src="img/ws.png" class="piece-icon">
+      <img src="img/ws.png" class="piece-icon" alt="White Sceptre">
       <span>SCEPTRE</span>
-      <img src="img/bs.png" class="piece-icon">
+      <img src="img/bs.png" class="piece-icon" alt="Black Sceptre">
     </div>
-
     <div class="piece-body">
-      <video controls src="MyGame/video/sceptre.mp4"></video>
-      <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos).:</strong> </p>
-<img src="img/sceptre/nandi01.jpg">
-      <p class="justify-text">
-  <strong>The Sceptre:</strong> considered in the form of a Sangul or royal staff, will be the most powerful piece in the game, holding the combined abilities of the Airavat, Bishop, and Knight. It will be a true game changer, as its movements are exceptional, multi-dimensional, and strategically highly impactful. The Sceptre emerges as a symbol of power, dignity, and extraordinary tactical capability, elevating the entire gameplay to a new and majestic level. Combines Rook + Bishop + Knight powers.
+      <video controls src="img/V.....mp4" preload="none"></video>
+      <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos).: </strong></p>
+      <img src="img/nandi01.jpg" alt="Sceptre" loading="lazy">
+      <p style="text-align:justify;">
+        <strong>The Sceptre:</strong> considered in the form of a Sangul or royal staff, will be the most powerful piece in the game, holding the combined abilities of the Airavat, Bishop, and Knight. It will be a true game changer, as its movements are exceptional, multi-dimensional, and strategically highly impactful. The Sceptre emerges as a symbol of power, dignity, and extraordinary tactical capability, elevating the entire gameplay to a new and majestic level. Combines Rook + Bishop + Knight powers.
 </p>
     </div>
   </div>
-
-</div>
-
 </div>
 </div>
 </section>
@@ -411,7 +437,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 <h3>Contact Information</h3>
 <p>📧 Email: amarjeetsurana@gmail.com</p>
 <p>📞 Phone: +91-6260314913</p>
-<p>📍 Location: Vidisha, Madhya Pradesh, India</p>
+<p>📍 Location: Vidisha, PIN-464001, Madhya Pradesh, India</p>
 </div>
 </section>
 
@@ -425,9 +451,75 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 
 <!-- FOOTER -->
 <footer>
-<p>Developed by Jitendra Kumar Surana & Rishabh Jain</p>
+<p>Developed by Jitendra Kumar Surana & Rishabh Surana</p>
 <p>© 2025 TheGrandChess9</p>
 </footer>
+
+<script>
+  // Optimize for mobile performance
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  // Debounce function for performance
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  // Optimized play button handler
+  const playBtn = document.getElementById("playBtn");
+  const gameWrapper = document.getElementById("gameWrapper");
+  
+  playBtn.addEventListener("click", debounce(function () {
+    gameWrapper.style.display = "block";
+    
+    // Only load iframe when needed for mobile
+    if (isMobile) {
+      const iframe = gameWrapper.querySelector('iframe');
+      if (!iframe.src) {
+        iframe.src = "https://thegrandchess9-yfkl.onrender.com";
+      }
+    }
+    
+    // smooth scroll to play section
+    document.getElementById("play").scrollIntoView({
+      behavior: "smooth"
+    });
+  }, 200));
+  
+  // Lazy load videos when they come into view
+  const videos = document.querySelectorAll('video');
+  const videoObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        video.preload = "metadata";
+        observer.unobserve(video);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  videos.forEach(video => {
+    videoObserver.observe(video);
+  });
+  
+  // Performance monitoring
+  if (window.performance && window.performance.memory) {
+    setInterval(() => {
+      if (window.performance.memory.usedJSHeapSize > 50000000) { // 50MB
+        console.warn('High memory usage detected');
+        // Force garbage collection if available
+        if (window.gc) window.gc();
+      }
+    }, 30000);
+  }
+</script>
 
 </body>
 </html>
