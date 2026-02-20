@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
   <!-- Homepage -->
   <url>
     <loc>https://thegrandchess9.com/</loc>
@@ -9,7 +8,7 @@
     <priority>1.0</priority>
   </url>
   
-  <!-- Blog page -->
+  <!-- Blog pages -->
   <url>
     <loc>https://thegrandchess9.com/blog.html</loc>
     <lastmod>2026-02-20</lastmod>
@@ -17,15 +16,13 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Future pages: add here -->
-  <!-- Example: -->
+  <!-- Add future blog pages below -->
   <!--
   <url>
-    <loc>https://thegrandchess9.com/contact.html</loc>
-    <lastmod>2026-02-20</lastmod>
+    <loc>https://thegrandchess9.com/blog2.html</loc>
+    <lastmod>2026-02-21</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   -->
-
 </urlset>
