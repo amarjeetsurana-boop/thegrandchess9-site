@@ -1,1 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>TheGrandChess9 Blog</title>
+<link>https://thegrandchess9.com/</link>
+<description>Official blog of TheGrandChess9</description>
 
+<item>
+<title>TheGrandChess9: A Powerful New Evolution</title>
+<link>https://thegrandchess9.com/blog.html</link>
+<description>
+TheGrandChess9 introduces a 9×9 board, Charioteer (Sārthi), and the powerful Sceptre piece...
+</description>
+<pubDate>Thu, 20 Feb 2026 12:00:00 GMT</pubDate>
+</item>
+
+</channel>
+</rss>
