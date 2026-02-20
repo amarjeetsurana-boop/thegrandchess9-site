@@ -2,487 +2,286 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-<meta name="description" content="TheGrandChess9 - A next-generation 9x9 chess variant.">
-<meta name="theme-color" content="#0f172a">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>TheGrandChess9 – Official</title>
 
 <style>
-/* =========================================
-   1. CORE VARIABLES & RESET (Flexible Base)
-   ========================================= */
-:root {
-  /* Palette */
-  --bg-dark: #bfc7db;
-  --bg-panel: #1e293b;
-  --bg-deep: #020617;
-  --gold: #b08d2f;
-  --gold-light: #f0d797;
-  --gold-glow: rgba(255, 215, 0, 0.6);
-  --text: #f8fafc;
-  --muted: #c5d2e3;
-  --danger: #dc2626;
-  
-  /* Spacing & Layout (Fluid units) */
-  --radius-md: 12px;
-  --radius-lg: 22px;
-  --container-width: 1200px;
-  --spacing-section: clamp(40px, 8vw, 80px);
-  --transition-speed: 0.3s;
+:root{
+  --bg-dark:#bfc7db;
+  --bg-panel:#1e293b;
+  --gold:#b08d2f;
+  --gold-light:#f0d797;
+  --text:#f8fafc;
+  --muted:#c5d2e3;
 }
 
-/* Reset & Base Styles */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+body{
+  background:var(--bg-dark);
+  color:var(--text);
+  font-family:Segoe UI,sans-serif;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-  font-size: 16px;
-}
+.container{max-width:1200px;margin:auto;padding:0 20px}
+section{padding:40px 0}
 
-body {
-  background: var(--bg-dark);
-  color: var(--text);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ===== HEADER ===== */
+header{
+  background:linear-gradient(180deg,#24324a,#0f172a);
+  border-bottom:8px solid var(--gold);
+  position:sticky;
+  top:0;
+  z-index:999;
 }
-
-img, video {
-  max-width: 100%;
-  display: block;
+.nav{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:46px;height:46px}
+.brand span{
+  color:#ffd700;
+  text-shadow:0 0 12px rgba(255,215,0,.6);
 }
-
-.container {
-  width: 100%;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: 0 clamp(15px, 4vw, 30px);
+nav a{
+  color:var(--muted);
+  margin-left:20px;
+  text-decoration:none;
+  font-size:14px;
 }
+nav a:hover{color:var(--gold-light)}
 
-section {
-  padding: var(--spacing-section) 0;
-}
-
-/* =========================================
-   2. TYPOGRAPHY (Fluid Scaling)
-   ========================================= */
-h1, h2, h3 {
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-.title {
-  text-align: center;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
-  color: var(--gold);
-  margin-bottom: clamp(30px, 5vw, 50px);
-  position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* =========================================
-   3. HEADER & NAV (Sticky & Flex)
-   ========================================= */
-header {
-  background: linear-gradient(180deg, #24324a, #0f172a);
-  border-bottom: 4px solid var(--gold);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  min-height: 70px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.brand img {
-  width: clamp(36px, 5vw, 46px);
-  height: auto;
-}
-
-.brand span {
-  color: #ffd700;
-  text-shadow: 0 0 12px var(--gold-glow);
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-}
-
-nav a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
-  font-weight: 500;
-  transition: color var(--transition-speed);
-  position: relative;
-}
-
-nav a:hover {
-  color: var(--gold-light);
-}
-
-/* Underline animation */
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: var(--gold);
-  transition: width var(--transition-speed);
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* =========================================
-   4. HERO SECTION (Glassmorphism)
-   ========================================= */
-.hero {
-  min-height: 50vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* ===== HERO ===== */
+.hero{
+  min-height:40vh;
   background:
-    linear-gradient(rgba(115,23,32,0.55), rgba(15,23,82,0.65)),
+    linear-gradient(rgba(115,23,32,.55),rgba(15,23,82,.65)),
     url("img/BACKGROUND02.jpg") center/cover no-repeat;
-  position: relative;
+  display:flex;
+  align-items:center;
+  text-align:center;
 }
 
-.hero-box {
-  background: rgba(85, 63, 122, 25.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(176, 141, 47, 0.3);
-  border-radius: var(--radius-lg);
-  padding: clamp(20px, 5vw, 40px);
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+/* ===== HERO GLASS BOX ===== */
+.hero-box{
+  background:rgba(15,23,42,.55);
+  border:1px solid rgba(176,141,47,.35);
+  border-radius:22px;
+  padding:30px 20px;
+  max-width:1100px;
+  margin:auto;
+  animation:fadeUp 1.2s ease forwards;
 }
 
-.hero-logo {
-  width: clamp(120px, 20vw, 180px);
-  margin: 0 auto 10px;
-  animation: glow 3s ease-in-out infinite;
+/* ===== HERO LOGO ===== */
+.hero-logo{
+  width:120px;
+  display:block;
+  margin:0 auto 10px;
+  animation:glow 1.0s ease-in-out infinite;
 }
 
-.hero-title {
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
-  color: var(--gold);
-  text-shadow: 0 4px 12px rgba(0,0,0,0.8);
-  margin-bottom: 20px;
+/* ===== HERO TITLE ===== */
+.hero-title{
+  font-size:1.8rem;
+  color:var(--gold);
+  text-shadow:0 6px 22px rgba(0,0,0,.7);
+  margin-bottom:15px;
 }
 
-.hero-tagline {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--muted);
-  margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+/* ===== HERO TAGLINE ===== */
+.hero-tagline{
+  font-size:1.2rem;
+  color:var(--muted);
+  line-height:1.6;
 }
 
-/* Play Button */
-.play-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 32px;
-  border-radius: 50px;
-  border: 2px solid var(--gold);
-  color: var(--gold);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
-  background: transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+/* ===== PLAY BUTTON ===== */
+.play-btn{
+  display:inline-block;
+  padding:12px 28px;
+  border-radius:30px;
+  border:2px solid var(--gold);
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s ease;
+  margin:15px 0;
+  touch-action:manipulation;
+}
+.play-btn:hover{
+  background:var(--gold);
+  color:#000;
+  transform:scale(1.06);
 }
 
-.play-btn:hover {
-  background: var(--gold);
-  color: #000;
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(176, 141, 47, 0.4);
+/* ===== FEATURES ===== */
+.title{
+  text-align:center;
+  font-size:2.5rem;
+  color:var(--gold);
+  margin-bottom:40px;
 }
 
-.play-btn:active {
-  transform: translateY(0);
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
 }
 
-/* =========================================
-   5. GAME WRAPPER (Responsive Iframe)
-   ========================================= */
-.play-frame-container {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  pointer-events: none; /* Prevent clicks when hidden */
+.card{
+  background:var(--bg-panel);
+  padding:25px;
+  border-radius:20px;
+  border:1px solid rgba(176,141,47,.25);
+  transform:translateZ(0);
+}
+.card h3{color:var(--gold);margin-bottom:10px}
+
+/* ===== PIECES - UPDATED ===== */
+.piece-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); /* ← Left-Right layout */
+  gap:30px;
+  align-items:start; /* ← Align pieces at top */
+}
+.piece{
+  background:var(--bg-panel);
+  border-radius:12px;
+  overflow:hidden;
+  height:100%; /* ← Equal height for both pieces */
+  display:flex;
+  flex-direction:column;
+}
+.piece-header{
+  background:var(--gold);
+  color:#000;
+  padding:15px;
+  font-weight:bold;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  flex-shrink:0; /* ← Prevent header from shrinking */
+}
+.piece-icon{width:40px;height:40px}
+.piece-body{
+  padding:20px;
+  flex:1; /* ← Body takes remaining space */
+  display:flex;
+  flex-direction:column;
+}
+.piece-body img,
+.piece-body video{
+  width:100%;
+  border-radius:8px;
+  margin-bottom:15px;
+  max-height:300px;
+  object-fit:cover;
+}
+.piece-body p{
+  flex:1; /* ← Text takes remaining space */
 }
 
-.play-frame-container.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
+/* ===== COPYRIGHT ===== */
+.copyright{
+  background:#f8fafc;
+  color:#1e293b;
+}
+.copyright-box{
+  background:#fff;
+  padding:25px;
+  border-radius:10px;
+  border:2px solid #e2e8f0;
+}
+.row{display:flex;margin-bottom:12px;flex-wrap:wrap}
+.label{width:200px;font-weight:600;min-width:150px}
+.notice{
+  background:#fff1f2;
+  border-left:5px solid #dc2626;
+  padding:15px;
+  margin-top:20px;
 }
 
-.play-frame {
-  width: 100%;
-  height: 80vh;
-  min-height: 1000px;
-  border: 6px solid var(--gold);
-  border-radius: var(--radius-md);
-  background: #000;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+/* ===== CONTACT & FOOTER ===== */
+.contact,
+footer{
+  background:#020617;
+  color:var(--muted);
+}
+footer{
+  text-align:center;
+  padding:25px 0;
+  border-top:1px solid #1e293b;
 }
 
-/* =========================================
-   6. FEATURES (Grid)
-   ========================================= */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+/* ===== PLAY FRAME ===== */
+.play-frame{
+  width:100%;
+  height:85vh; /* ← Increased height */
+  min-height:900px; /* ← Increased min-height */
+  max-height:1100px;
+  border:8px solid var(--gold);
+  border-radius:12px;
+  background:#000;
+  transform:translateZ(0);
 }
 
-.card {
-  background: var(--bg-panel);
-  padding: 30px;
-  border-radius: var(--radius-lg);
-  border: 1px solid rgba(176, 141, 47, 0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ===== ANIMATIONS ===== */
+@keyframes glow{
+  0%{filter:drop-shadow(0 0 6px rgba(176,141,47,.4))}
+  50%{filter:drop-shadow(0 0 20px rgba(214,180,90,.95))}
+  100%{filter:drop-shadow(0 0 6px rgba(176,141,47,.4))}
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  border-color: rgba(176, 141, 47, 0.4);
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-.card h3 {
-  color: var(--gold);
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-}
-
-/* =========================================
-   7. PIECES (Optimized Layout)
-   ========================================= */
-.piece-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* Mobile default: Stacked */
-  gap: 40px;
-  align-items: stretch;
-}
-
-@media (min-width: 900px) {
-  .piece-grid {
-    grid-template-columns: 1fr 1fr; /* Desktop: Side by Side */
+/* ===== MOBILE RESPONSIVE ===== */
+@media(max-width:900px){ /* ← Pieces stack vertically */
+  .piece-grid{
+    grid-template-columns:1fr;
+    gap:25px;
   }
 }
 
-.piece {
-  background: var(--bg-panel);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.piece-header {
-  background: linear-gradient(135deg, var(--gold), #8a6d20);
-  color: #000;
-  padding: 15px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.piece-icon {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
-.piece-body {
-  padding: 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.piece-body video {
-  width: 100%;
-  border-radius: 8px;
-  max-height: 350px;
-  object-fit: cover;
-  background: #000;
-}
-
-.piece-body img {
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid rgba(176,141,47,0.2);
-}
-
-/* =========================================
-   8. COPYRIGHT & LEGAL
-   ========================================= */
-.copyright {
-  background: #f8fafc;
-  color: #1e293b;
-}
-
-.copyright-box {
-  background: #fff;
-  padding: 30px;
-  border-radius: var(--radius-md);
-  border: 2px solid #e2e8f0;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.row {
-  display: flex;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.label {
-  width: 200px;
-  font-weight: 700;
-  color: #334155;
-  flex-shrink: 0;
-}
-
-.notice {
-  background: #fff1f2;
-  border-left: 5px solid var(--danger);
-  padding: 15px;
-  margin-top: 25px;
-  color: #881337;
-  font-size: 0.95rem;
-}
-
-/* =========================================
-   9. CONTACT & FOOTER
-   ========================================= */
-.contact {
-  background: var(--bg-deep);
-  color: var(--muted);
-}
-
-.contact p {
-  margin-bottom: 10px;
-}
-
-footer {
-  background: #000;
-  color: #64748b;
-  text-align: center;
-  padding: 30px 0;
-  border-top: 1px solid #1e293b;
-  font-size: 0.9rem;
-}
-
-.Disclaimer {
-  background: #0f172a;
-  color: var(--muted);
-  padding: 40px 0;
-  font-size: 0.9rem;
-}
-
-/* =========================================
-   10. ANIMATIONS & MOBILE TWEAKS
-   ========================================= */
-@keyframes glow {
-  0%, 100% { filter: drop-shadow(0 0 8px rgba(176,141,47,0.3)); }
-  50% { filter: drop-shadow(0 0 20px rgba(214,180,90,0.9)); }
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .nav {
-    flex-direction: column;
-    gap: 15px;
+@media(max-width:768px){
+  .nav{flex-direction:column;gap:10px}
+  nav{display:flex;justify-content:center;flex-wrap:wrap}
+  nav a{margin:5px 10px}
+  
+  .hero-title{font-size:1.5rem}
+  .hero-logo{width:80px}
+  .hero-box{padding:20px 15px}
+  
+  .title{font-size:2rem}
+  
+  .play-frame{
+    height:80vh; /* ← Mobile height */
+    min-height:550px;
+    border-radius:0;
+    border-width:4px;
   }
   
-  nav {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+  .card{padding:20px}
+  .piece-body{padding:15px}
   
-  .row {
-    flex-direction: column;
-  }
-  
-  .label {
-    width: 100%;
-    margin-bottom: 5px;
-    color: #0f172a;
-  }
-
-  .play-frame {
-    height: 70vh;
-    min-height: 500px;
-    border-width: 3px;
-  }
+  .row{flex-direction:column}
+  .label{width:100%;margin-bottom:5px}
 }
 
+/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
 </style>
 </head>
@@ -492,15 +291,16 @@ footer {
 <!-- HEADER -->
 <header>
 <div class="container nav">
-  <a href="#" class="brand">
+  <div class="brand">
     <img src="img/Logo.png" alt="TheGrandChess9 Logo">
     <span>TheGrandChess9</span>
-  </a>
+  </div>
   <nav>
     <a href="#features">Features</a>
     <a href="#pieces">Pieces</a>
     <a href="#copyright">Copyright</a>
     <a href="#contact">Contact</a>
+	<a href="blog.html">Blog</a>
   </nav>
 </div>
 </header>
@@ -510,14 +310,14 @@ footer {
   <div class="container">
     <div class="hero-box">
       <img src="img/Logo.png" class="hero-logo" alt="TheGrandChess9 Logo">
-      <h1 class="hero-title">Welcome to TheGrandChess9</h1>
+      <h1 class="hero-title">Welcome TheGrandChess9</h1>
+      <p>
+        <a href="#play" class="play-btn" id="playBtn">
+          ▶ Play TheGrandChess9
+        </a>
+      </p>
       <p class="hero-tagline">
         A next-generation chess variant redefining strategy and creativity.
-      </p>
-      <p>
-        <button class="play-btn" id="playBtn" aria-label="Play TheGrandChess9 Game">
-          ▶ Play TheGrandChess9
-        </button>
       </p>
     </div>
   </div>
@@ -526,15 +326,13 @@ footer {
 <!-- PLAY GAME -->
 <section id="play">
   <div class="container" style="text-align:center">
-    <!-- AI Smart Wrapper: Hidden by default to save bandwidth -->
-    <div id="gameWrapper" class="play-frame-container">
+    <!-- iframe wrapper -->
+    <div id="gameWrapper" style="display:none;">
       <iframe
         class="play-frame"
-        data-src="https://thegrandchess9-yfkl.onrender.com"
-        src="about:blank"
+        src="https://thegrandchess9-yfkl.onrender.com"
         allow="fullscreen"
-        loading="lazy"
-        title="TheGrandChess9 Game">
+        loading="lazy">
       </iframe>
     </div>
   </div>
@@ -586,10 +384,8 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
       <img src="img/bc.png" class="piece-icon" alt="Black Charioteer">
     </div>
     <div class="piece-body">
-      <video controls preload="none" poster="img/SARTHI02.jpeg">
-        <source src="img/SARTHI.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <video controls src="img/SARTHI.mp4" preload="none"></video>
+      <img src="img/SARTHI02.jpeg" alt="Charioteer" loading="lazy">
       <p style="text-align:justify;">
   <strong>The Charioteer</strong> is a divine guardian who serves as both charioteer and protective shield for the King from all sides. The Charioteer neither attacks anyone nor can anyone attack him. His sole purpose is to protect the King, forming an invisible circle of safety wherever the King stands. He exists not for battle, but to ensure the King’s security and stability. Because of this sacred role, the Charioteer becomes a unique symbol of divine protection, balance, and profound strategic depth within the game.
 </p>
@@ -603,12 +399,10 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
       <img src="img/bs.png" class="piece-icon" alt="Black Sceptre">
     </div>
     <div class="piece-body">
-      <video controls preload="none" poster="img/nandi01.jpg">
-        <source src="img/Videoclip.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos): </strong>
-        <br><br>
+      <video controls src="img/Videoclip.mp4" preload="none"></video>
+      <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos).: </strong></p>
+      <img src="img/nandi01.jpg" alt="Sceptre" loading="lazy">
+      <p style="text-align:justify;">
         <strong>The Sceptre:</strong> considered in the form of a Sangul or royal staff, will be the most powerful piece in the game, holding the combined abilities of the Airavat, Bishop, and Knight. It will be a true game changer, as its movements are exceptional, multi-dimensional, and strategically highly impactful. The Sceptre emerges as a symbol of power, dignity, and extraordinary tactical capability, elevating the entire gameplay to a new and majestic level. Combines Rook + Bishop + Knight powers.
 </p>
     </div>
@@ -628,7 +422,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
   <div class="row"><div class="label">Year:</div>2025</div>
   <div class="row"><div class="label">Rights:</div>All game rules, pieces, UI, logic & branding are protected.</div>
 
-  <p style="margin-top:20px"><strong>© 2025 Jitendra Kumar Surana. All Rights Reserved.</strong></p>
+  <p><strong>© 2025 Jitendra Kumar Surana. All Rights Reserved.</strong></p>
 
   <div class="notice">
     Unauthorized copying, distribution or commercial use without written permission
@@ -641,7 +435,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 <!-- CONTACT -->
 <section id="contact" class="contact">
 <div class="container">
-<h3 style="color:var(--gold); margin-bottom:20px; font-size:1.5rem;">Contact Information</h3>
+<h3>Contact Information</h3>
 <p>📧 Email: amarjeetsurana@gmail.com</p>
 <p>📞 Phone: +91-6260314913</p>
 <p>📍 Location: Vidisha, PIN-464001, Madhya Pradesh, India</p>
@@ -651,8 +445,8 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 <!-- DISCLAIMER -->
 <section id="Disclaimer" class="Disclaimer">
 <div class="container">
-<h3 style="color:var(--muted); margin-bottom:15px; border-bottom:1px solid #334155; padding-bottom:10px; display:inline-block;">DISCLAIMER</h3>
-<p style="text-align:justify; opacity:0.9;">This game is created solely for entertainment, skill development, and strategic experience. All rules, characters, pieces, and concepts used in TheGrandChess9 are entirely fictional, creative, and based on the developers’ imagination. It is not intended to disrespect, misrepresent, or make inappropriate comparisons to any real historical, religious, or cultural symbols. Users engage with the game at their own discretion, and the developers shall not be responsible for any kind of damage, misuse, or technical issues. The overall gameplay experience may vary depending on personal preferences.</p>
+<h3>DISCLAIMER</h3>
+<p style="text-align:justify;">This game is created solely for entertainment, skill development, and strategic experience. All rules, characters, pieces, and concepts used in TheGrandChess9 are entirely fictional, creative, and based on the developers’ imagination. It is not intended to disrespect, misrepresent, or make inappropriate comparisons to any real historical, religious, or cultural symbols. Users engage with the game at their own discretion, and the developers shall not be responsible for any kind of damage, misuse, or technical issues. The overall gameplay experience may vary depending on personal preferences.</p>
 </div>
 </section>
 
@@ -663,80 +457,69 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 </footer>
 
 <script>
-  /**
-   * TheGrandChess9 - Intelligent Interaction Controller
-   * Handles lazy loading, smooth animations, and performance optimizations.
-   */
-
-  document.addEventListener('DOMContentLoaded', () => {
+  // Optimize for mobile performance
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  // Debounce function for performance
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  // Optimized play button handler
+  const playBtn = document.getElementById("playBtn");
+  const gameWrapper = document.getElementById("gameWrapper");
+  
+  playBtn.addEventListener("click", debounce(function () {
+    gameWrapper.style.display = "block";
     
-    // --- 1. Smart Game Loader ---
-    // We only load the heavy iframe when the user explicitly asks to play.
-    const playBtn = document.getElementById("playBtn");
-    const gameWrapper = document.getElementById("gameWrapper");
-    const gameIframe = gameWrapper.querySelector('iframe');
-
-    playBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      
-      // Visual feedback state
-      playBtn.innerHTML = "⏳ Loading Game...";
-      playBtn.style.opacity = "0.8";
-      
-      // Reveal the container
-      gameWrapper.style.display = "block";
-      
-      // Trigger reflow for animation
-      void gameWrapper.offsetWidth;
-      
-      gameWrapper.classList.add("visible");
-      
-      // Lazy load the iframe source
-      const targetSrc = gameIframe.getAttribute('data-src');
-      if (targetSrc && gameIframe.getAttribute('src') === 'about:blank') {
-        gameIframe.onload = () => {
-          playBtn.innerHTML = "▶ Playing Now";
-          playBtn.style.borderColor = "#4ade80"; // Green tint for active state
-        };
-        gameIframe.src = targetSrc;
+    // Only load iframe when needed for mobile
+    if (isMobile) {
+      const iframe = gameWrapper.querySelector('iframe');
+      if (!iframe.src) {
+        iframe.src = "https://thegrandchess9-yfkl.onrender.com";
       }
-      
-      // Smooth scroll to game area
-      document.getElementById("play").scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    });
-
-    // --- 2. Performance Observer for Videos ---
-    // Only load heavy video data when the user scrolls near it
-    const videos = document.querySelectorAll('video');
-    
-    if ('IntersectionObserver' in window) {
-      const videoObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const video = entry.target;
-            // Switch from 'none' (metadata only) to 'auto' allows browser to buffer
-            if(video.preload === 'none') {
-              video.preload = "metadata"; 
-            }
-            observer.unobserve(video);
-          }
-        });
-      }, { rootMargin: "200px 0px" });
-      
-      videos.forEach(video => videoObserver.observe(video));
     }
-
-    // --- 3. Mobile Optimization: Prevent Overscroll Bounce in Game ---
-    // Helps keep the iframe feeling like a native app
-    gameIframe.addEventListener('load', () => {
-      // This is a passive listener to improve scroll performance
-      gameIframe.style.pointerEvents = "all";
+    
+    // smooth scroll to play section
+    document.getElementById("play").scrollIntoView({
+      behavior: "smooth"
     });
-
+  }, 200));
+  
+  // Lazy load videos when they come into view
+  const videos = document.querySelectorAll('video');
+  const videoObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        video.preload = "metadata";
+        observer.unobserve(video);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  videos.forEach(video => {
+    videoObserver.observe(video);
   });
+  
+  // Performance monitoring
+  if (window.performance && window.performance.memory) {
+    setInterval(() => {
+      if (window.performance.memory.usedJSHeapSize > 50000000) { // 50MB
+        console.warn('High memory usage detected');
+        // Force garbage collection if available
+        if (window.gc) window.gc();
+      }
+    }, 30000);
+  }
 </script>
 
 </body>
