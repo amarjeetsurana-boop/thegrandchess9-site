@@ -14,5 +14,14 @@ TheGrandChess9 introduces a 9×9 board, Charioteer (Sārthi), and the powerful S
 <pubDate>Thu, 20 Feb 2026 12:00:00 GMT</pubDate>
 </item>
 
+<!-- Add future blogs here -->
+<!--
+<item>
+<title>Blog 2 Title</title>
+<link>https://thegrandchess9.com/blog2.html</link>
+<description>Short description of Blog 2...</description>
+<pubDate>Fri, 21 Feb 2026 12:00:00 GMT</pubDate>
+</item>
+-->
 </channel>
 </rss>
