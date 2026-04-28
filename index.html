@@ -325,6 +325,30 @@ footer{
 </section>
 
 <!-- PLAY GAME -->
+<section id="auth">
+  <div class="container" style="text-align:center; margin-top:30px;">
+    
+    <div style="background:#1e293b; padding:25px; border-radius:15px; max-width:400px; margin:auto;">
+      
+      <h2 style="color:#f0d797;">Login / Create Account</h2>
+
+      <input type="email" id="email" placeholder="Enter Email" style="width:100%; padding:10px; margin:10px 0;">
+      <input type="password" id="password" placeholder="Enter Password" style="width:100%; padding:10px; margin:10px 0;">
+
+      <button onclick="signup()" class="play-btn">Create Account</button>
+      <button onclick="login()" class="play-btn">Login</button>
+
+      <!-- MESSAGE BOX -->
+      <div id="authMessage" style="margin-top:15px; font-size:14px;"></div>
+
+      <!-- RESEND BUTTON -->
+      <button onclick="resendEmail()" id="resendBtn" style="display:none; margin-top:10px;">
+        Resend Verification Email
+      </button>
+
+    </div>
+  </div>
+</section>
 <section id="play">
   <div class="container" style="text-align:center">
     <!-- iframe wrapper -->
@@ -521,6 +545,49 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
       }
     }, 30000);
   }
+function showMessage(msg, color="lightgreen") {
+  const box = document.getElementById("authMessage");
+  box.style.color = color;
+  box.innerHTML = msg;
+}
+
+// SIGNUP
+function signup() {
+  const email = document.getElementById("email").value;
+
+  // यहाँ आपका backend या Firebase call होगा
+
+  showMessage(`
+    ✅ Account created successfully! <br><br>
+    📧 Please check your email (Inbox or Spam folder) to verify your account.<br><br>
+    ⚠️ You cannot login until verification is complete.
+  `);
+
+  document.getElementById("resendBtn").style.display = "block";
+}
+
+// LOGIN
+function login() {
+  // backend check
+    
+  const isVerified = false; // backend से आएगा
+
+  if (!isVerified) {
+    showMessage(`
+      ❌ Email not verified.<br><br>
+      📧 Please check your inbox/spam and verify first.
+    `, "orange");
+
+    document.getElementById("resendBtn").style.display = "block";
+  } else {
+    showMessage("✅ Login successful!");
+  }
+}
+
+// RESEND EMAIL
+function resendEmail() {
+  showMessage("📧 Verification email sent again. Please check inbox/spam.");
+}
 </script>
 
 </body>
