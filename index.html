@@ -335,7 +335,7 @@ footer{
       </p>
 
       <!-- 🔽 Play Now ke theek niche yeh naya Install Button jodh diya hai 🔽 -->
-      <div id="installBtnWrapper" style="text-align: center; margin: 15px 0;">
+      <div id="installBtnWrapper" style="text-align: center; display: none; margin: -5px 0 15px 0;">
         <button id="pwaInstallBtn" style="padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
           📱 Install 9x9 Chess App
         </button>
@@ -358,12 +358,9 @@ const installBtn = document.getElementById('pwaInstallBtn');
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
+    // Play Now ke neeche button wale box ko show kar dein
+    installBtnWrapper.style.display = 'block';
 });
-
-const installInfo=document.createElement('div');
-installInfo.id='installInfo';
-installInfo.style.marginTop='10px';
-installBtnWrapper.appendChild(installInfo);
 
 // Jab user button par click kare
 installBtn.addEventListener('click', async () => {
@@ -374,14 +371,6 @@ installBtn.addEventListener('click', async () => {
         deferredPrompt = null;
         // Click hone ke baad poore wrapper ko chhupa dein
         installBtnWrapper.style.display = 'none';
-        return;
-    }
-    if(/android/i.test(navigator.userAgent)){
-        installInfo.innerHTML='📱 Chrome Menu (⋮) → Install App';
-    }else if(/iphone|ipad|ipod/i.test(navigator.userAgent)){
-        installInfo.innerHTML='📱 Share → Add to Home Screen';
-    }else{
-        installInfo.innerHTML='💻 Chrome Menu → Install TheGrandChess9';
     }
 });
 
