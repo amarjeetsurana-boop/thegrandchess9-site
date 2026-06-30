@@ -319,26 +319,66 @@ footer{
 </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO SECTION -->
 <section class="hero">
   <div class="container">
     <div class="hero-box">
       <img src="img/Logo.png" class="hero-logo" alt="TheGrandChess9 Logo">
       <h1 class="hero-title">Welcome to TheGrandChess9</h1>
       <p>
-       <a href="https://thegrandchess9-yfkl.onrender.com" 
-   target="_blank"
-   class="play-btn" 
-   id="playBtn">
-   ▶ Play TheGrandChess9 Now
-</a>
+        <a href="https://thegrandchess9-yfkl.onrender.com" 
+           target="_blank"
+           class="play-btn" 
+           id="playBtn">
+           ▶ Play TheGrandChess9 Now
+        </a>
       </p>
+
+      <!-- 🔽 Play Now ke theek niche yeh naya Install Button jodh diya hai 🔽 -->
+      <div id="installBtnWrapper" style="text-align: center; display: none; margin: -5px 0 15px 0;">
+        <button id="pwaInstallBtn" style="padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+          📱 Install 9x9 Chess App
+        </button>
+      </div>
+
       <p class="hero-tagline">
         A next-generation chess variant redefining strategy and creativity.
       </p>
     </div>
   </div>
 </section>
+
+<!-- 🔽 JavaScript Code (Ise isi page ke sabse neeche </body> se pehle jodein) 🔽 -->
+<script>
+let deferredPrompt;
+const installBtnWrapper = document.getElementById('installBtnWrapper');
+const installBtn = document.getElementById('pwaInstallBtn');
+
+// Browser check karega ki app install ho sakti hai ya nahi
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Play Now ke neeche button wale box ko show kar dein
+    installBtnWrapper.style.display = 'block';
+});
+
+// Jab user button par click kare
+installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User choice: ${outcome}`);
+        deferredPrompt = null;
+        // Click hone ke baad poore wrapper ko chhupa dein
+        installBtnWrapper.style.display = 'none';
+    }
+});
+
+// Install complete hone par button hide karein
+window.addEventListener('appinstalled', () => {
+    installBtnWrapper.style.display = 'none';
+});
+</script>
 
 <!-- PLAY GAME -->
 <section id="play">
