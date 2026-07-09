@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 👑 Title (Aisa rakhein jo log search karte hain) -->
+    <!-- 👑 Title -->
     <title>TheGrandChess9 - Play Premium 9x9 Chess Game Online</title>
 
-    <!-- 📝 Meta Description (Google par link ke niche jo text dikhta hai) -->
+    <!-- 📝 Meta Description -->
     <meta name="description" content="Play the ultimate GrandChess9x9 game online. Experience new 9x9 chess boards, super chess modes, and play free with friends instantly. No download required!">
 
-    <!-- 🏷️ Keywords (Jo log search kar sakte hain) -->
+    <!-- 🏷️ Keywords -->
     <meta name="keywords" content="chess, 9x9 chess, grandchess9, play chess online, super chess, free online chess, local multiplayer chess">
 
-    <!-- 🤖 Open Graph Tags (Jab aap WhatsApp/Facebook par link bhejenge toh badiya card banega) -->
+    <!-- 🤖 Open Graph Tags -->
     <meta property="og:title" content="TheGrandChess9 - Play Premium 9x9 Chess Game">
     <meta property="og:description" content="Experience the new version of chess with 9x9 boards and super modes. Play free now!">
     <meta property="og:image" content="img/Logo.png">
@@ -26,6 +26,7 @@
   --gold-light:#f0d797;
   --text:#f8fafc;
   --muted:#c5d2e3;
+  --accent-green:#28a745;
 }
 
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -42,7 +43,7 @@ body{
 }
 
 .container{max-width:1200px;margin:auto;padding:0 20px}
-section{padding:40px 0}
+section{padding:50px 0}
 
 /* ===== HEADER ===== */
 header{
@@ -52,24 +53,28 @@ header{
   top:0;
   z-index:999;
 }
-.nav{display:flex;justify-content:space-between;align-items:center}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:10px 20px}
 .brand{display:flex;align-items:center;gap:10px}
 .brand img{width:46px;height:46px}
 .brand span{
   color:#ffd700;
   text-shadow:0 0 12px rgba(255,215,0,.6);
+  font-weight:700;
 }
 nav a{
   color:var(--muted);
-  margin-left:20px;
+  margin-left:15px;
   text-decoration:none;
   font-size:14px;
+  font-weight:500;
+  transition:color 0.2s ease;
 }
-nav a:hover{color:var(--gold-light)}
+nav a:hover, nav a.highlight-link{color:var(--gold-light)}
+nav a.highlight-link{border:1px solid var(--gold); padding:4px 10px; border-radius:4px;}
 
 /* ===== HERO ===== */
 .hero{
-  min-height:40vh;
+  min-height:45vh;
   background:
     linear-gradient(rgba(115,23,32,.55),rgba(15,23,82,.65)),
     url("img/BACKGROUND02.jpg") center/cover no-repeat;
@@ -78,19 +83,17 @@ nav a:hover{color:var(--gold-light)}
   text-align:center;
 }
 
-/* ===== HERO GLASS BOX ===== */
 .hero-box{
-  background:rgba(255,255,255,0.88);
+  background:rgba(255,255,255,0.92);
   border:2px solid #f0d797;
   border-radius:22px;
-  padding:30px 20px;
+  padding:35px 20px;
   max-width:1100px;
   margin:auto;
   animation:fadeUp 1.2s ease forwards;
-  box-shadow:0 0 20px rgba(0,0,0,0.15);
+  box-shadow:0 10px 30px rgba(0,0,0,0.25);
 }
 
-/* ===== HERO LOGO ===== */
 .hero-logo{
   width:120px;
   display:block;
@@ -98,33 +101,33 @@ nav a:hover{color:var(--gold-light)}
   animation:glow 1.0s ease-in-out infinite;
 }
 
-/* ===== HERO TITLE ===== */
 .hero-title{
-  font-size:1.8rem;
+  font-size:2rem;
   color:var(--gold);
-  text-shadow:0 6px 22px rgba(0,0,0,.7);
+  text-shadow:0 2px 4px rgba(0,0,0,.1);
   margin-bottom:15px;
+  font-weight:800;
 }
 
-/* ===== HERO TAGLINE ===== */
 .hero-tagline{
   font-size:1.2rem;
-  color:var(--muted);
-  line-height:1.6;
+  color:#475569;
+  font-weight:500;
 }
 
 /* ===== PLAY BUTTON ===== */
 .play-btn{
   display:inline-block;
-  padding:12px 28px;
+  padding:14px 32px;
   border-radius:30px;
   border:2px solid var(--gold);
   color:var(--gold);
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
   transition:.3s ease;
   margin:15px 0;
   touch-action:manipulation;
+  background:transparent;
 }
 .play-btn:hover{
   background:var(--gold);
@@ -132,12 +135,14 @@ nav a:hover{color:var(--gold-light)}
   transform:scale(1.06);
 }
 
-/* ===== FEATURES ===== */
+/* ===== FEATURES & INSTALLATION ===== */
 .title{
   text-align:center;
   font-size:2.5rem;
   color:var(--gold);
   margin-bottom:40px;
+  text-transform:uppercase;
+  letter-spacing:1px;
 }
 
 .features{
@@ -153,20 +158,58 @@ nav a:hover{color:var(--gold-light)}
   border:1px solid rgba(176,141,47,.25);
   transform:translateZ(0);
 }
-.card h3{color:var(--gold);margin-bottom:10px}
+.card h3{color:var(--gold);margin-bottom:15px}
 
-/* ===== PIECES - UPDATED ===== */
+/* ===== INSTALL TIMELINE ===== */
+.installation-section {
+  background: #111827;
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+}
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.timeline-item {
+  padding: 20px 30px;
+  position: relative;
+  background: #1f2937;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid var(--gold);
+}
+.timeline-number {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  font-weight: 800;
+  color: rgba(176, 141, 47, 0.2);
+}
+.timeline-item h3 {
+  color: var(--gold-light);
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+}
+.timeline-item p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ===== PIECES ===== */
 .piece-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(400px,1fr)); /* ← Left-Right layout */
+  grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
   gap:30px;
-  align-items:start; /* ← Align pieces at top */
+  align-items:start;
 }
 .piece{
   background:var(--bg-panel);
   border-radius:12px;
   overflow:hidden;
-  height:100%; /* ← Equal height for both pieces */
+  height:100%;
   display:flex;
   flex-direction:column;
 }
@@ -179,12 +222,12 @@ nav a:hover{color:var(--gold-light)}
   align-items:center;
   justify-content:center;
   gap:10px;
-  flex-shrink:0; /* ← Prevent header from shrinking */
+  flex-shrink:0;
 }
 .piece-icon{width:40px;height:40px}
 .piece-body{
   padding:20px;
-  flex:1; /* ← Body takes remaining space */
+  flex:1;
   display:flex;
   flex-direction:column;
 }
@@ -195,9 +238,6 @@ nav a:hover{color:var(--gold-light)}
   margin-bottom:15px;
   max-height:300px;
   object-fit:cover;
-}
-.piece-body p{
-  flex:1; /* ← Text takes remaining space */
 }
 
 /* ===== COPYRIGHT ===== */
@@ -221,8 +261,7 @@ nav a:hover{color:var(--gold-light)}
 }
 
 /* ===== CONTACT & FOOTER ===== */
-.contact,
-footer{
+.contact, footer, .Disclaimer{
   background:#020617;
   color:var(--muted);
 }
@@ -235,8 +274,8 @@ footer{
 /* ===== PLAY FRAME ===== */
 .play-frame{
   width:100%;
-  height:85vh; /* ← Increased height */
-  min-height:900px; /* ← Increased min-height */
+  height:85vh;
+  min-height:900px;
   max-height:1100px;
   border:8px solid var(--gold);
   border-radius:12px;
@@ -250,52 +289,23 @@ footer{
   50%{filter:drop-shadow(0 0 20px rgba(214,180,90,.95))}
   100%{filter:drop-shadow(0 0 6px rgba(176,141,47,.4))}
 }
-
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(30px)}
   to{opacity:1;transform:translateY(0)}
 }
 
 /* ===== MOBILE RESPONSIVE ===== */
-@media(max-width:900px){ /* ← Pieces stack vertically */
-  .piece-grid{
-    grid-template-columns:1fr;
-    gap:25px;
-  }
+@media(max-width:900px){
+  .piece-grid{grid-template-columns:1fr;gap:25px;}
 }
-
 @media(max-width:768px){
-  .nav{flex-direction:column;gap:10px}
+  .nav{flex-direction:column;gap:10px;padding:15px 10px}
   nav{display:flex;justify-content:center;flex-wrap:wrap}
-  nav a{margin:5px 10px}
-  
-  .hero-title{font-size:1.5rem}
-  .hero-logo{width:80px}
-  .hero-box{padding:20px 15px}
-  
+  nav a{margin:5px 8px; font-size:13px}
+  .hero-title{font-size:1.6rem}
+  .hero-logo{width:90px}
   .title{font-size:2rem}
-  
-  .play-frame{
-    height:80vh; /* ← Mobile height */
-    min-height:550px;
-    border-radius:0;
-    border-width:4px;
-  }
-  
-  .card{padding:20px}
-  .piece-body{padding:15px}
-  
-  .row{flex-direction:column}
-  .label{width:100%;margin-bottom:5px}
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+  .play-frame{height:80vh; min-height:550px; border-width:4px;}
 }
 </style>
 </head>
@@ -312,9 +322,11 @@ footer{
   <nav>
     <a href="#features">Features</a>
     <a href="#pieces">Pieces</a>
+    <a href="Rules.html" class="highlight-link">📜 Rules of Chess9x9</a>
+    <a href="#install-guide">📲 How to App install in mobile</a>
     <a href="#copyright">Copyright</a>
     <a href="#contact">Contact</a>
-	<a href="blog.html">Blog</a>
+    <a href="blog.html">Blog</a>
   </nav>
 </div>
 </header>
@@ -334,10 +346,10 @@ footer{
         </a>
       </p>
 
-      <!-- 🔽 Play Now ke theek niche yeh naya Install Button jodh diya hai 🔽 -->
+      <!-- Instant Install Button Option -->
       <div id="installBtnWrapper" style="text-align: center; display: none; margin: -5px 0 15px 0;">
-        <button id="pwaInstallBtn" style="padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
-          📱 Install 9x9 Chess App
+        <button id="pwaInstallBtn" style="padding: 12px 24px; background-color: var(--accent-green); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+          📱 Fast Install 9x9 Chess App
         </button>
       </div>
 
@@ -348,42 +360,9 @@ footer{
   </div>
 </section>
 
-<!-- 🔽 JavaScript Code (Ise isi page ke sabse neeche </body> se pehle jodein) 🔽 -->
-<script>
-let deferredPrompt;
-const installBtnWrapper = document.getElementById('installBtnWrapper');
-const installBtn = document.getElementById('pwaInstallBtn');
-
-// Browser check karega ki app install ho sakti hai ya nahi
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    // Play Now ke neeche button wale box ko show kar dein
-    installBtnWrapper.style.display = 'block';
-});
-
-// Jab user button par click kare
-installBtn.addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User choice: ${outcome}`);
-        deferredPrompt = null;
-        // Click hone ke baad poore wrapper ko chhupa dein
-        installBtnWrapper.style.display = 'none';
-    }
-});
-
-// Install complete hone par button hide karein
-window.addEventListener('appinstalled', () => {
-    installBtnWrapper.style.display = 'none';
-});
-</script>
-
-<!-- PLAY GAME -->
+<!-- PLAY GAME FRAMEWORK -->
 <section id="play">
   <div class="container" style="text-align:center">
-    <!-- iframe wrapper -->
     <div id="gameWrapper" style="display:none;">
       <iframe
         class="play-frame"
@@ -392,6 +371,55 @@ window.addEventListener('appinstalled', () => {
         loading="lazy">
       </iframe>
     </div>
+  </div>
+</section>
+
+<!-- HOW TO INSTALL APP SECTION -->
+<section id="install-guide" class="installation-section">
+  <div class="container">
+    <h2 class="title">How to App install in mobile</h2>
+    <div class="timeline">
+      
+      <div class="timeline-item">
+        <div class="timeline-number">01</div>
+        <h3>Step-1</h3>
+        <p><strong>Open in Mobile Chrome</strong> browser on your androide mobile</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-number">02</div>
+        <h3>Step-2</h3>
+        <p>Click the <strong>Play TheGrandChess9 Now</strong></p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-number">03</div>
+        <h3>Step-3</h3>
+        <p>Verify <strong>Gmail.com</strong> and login</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-number">04</div>
+        <h3>Step-4</h3>
+        <p>On the Right, click vertical <strong>three dots ⋮</strong></p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-number">05</div>
+        <h3>Step-5</h3>
+        <p>Click <strong>Add to Home Screen</strong></p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-number">06</div>
+        <h3>Step-6</h3>
+        <p>click <strong>"Install"</strong></p>
+      </div>
+
+    </div>
+    <p style="text-align: center; color: var(--gold-light); font-size: 14px; margin-top: 10px;">
+      Close all and go to your screen. Your TheGrandChess9 is installed
+    </p>
   </div>
 </section>
 
@@ -443,9 +471,9 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
     <div class="piece-body">
       <video controls src="img/Sarthi.mp4" preload="none"></video>
       <img src="img/SARTHI02.jpeg" alt="Charioteer" loading="lazy">
-      <p style="text-align:justify;">
-  <strong>The Charioteer</strong> is a divine guardian who serves as both charioteer and protective shield for the King from all sides. The Charioteer neither attacks anyone nor can anyone attack him. His sole purpose is to protect the King, forming an invisible circle of safety wherever the King stands. He exists not for battle, but to ensure the King’s security and stability. Because of this sacred role, the Charioteer becomes a unique symbol of divine protection, balance, and profound strategic depth within the game.
-</p>
+      <p style="text-align:justify; margin-top: 10px;">
+        <strong>The Charioteer</strong> is a divine guardian who serves as both charioteer and protective shield for the King from all sides. The Charioteer neither attacks anyone nor can anyone attack him. His sole purpose is to protect the King, forming an invisible circle of safety wherever the King stands. He exists not for battle, but to ensure the King’s security and stability. Because of this sacred role, the Charioteer becomes a unique symbol of divine protection, balance, and profound strategic depth within the game.
+      </p>
     </div>
   </div>
 
@@ -459,9 +487,9 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
       <video controls src="img/videoclip.mp4" preload="none"></video>
       <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos).: </strong></p>
       <img src="img/nandi01.jpg" alt="Sceptre" loading="lazy">
-      <p style="text-align:justify;">
+      <p style="text-align:justify; margin-top: 10px;">
         <strong>The Sceptre:</strong> considered in the form of a Sangul or royal staff, will be the most powerful piece in the game, holding the combined abilities of the Airavat, Bishop, and Knight. It will be a true game changer, as its movements are exceptional, multi-dimensional, and strategically highly impactful. The Sceptre emerges as a symbol of power, dignity, and extraordinary tactical capability, elevating the entire gameplay to a new and majestic level. Combines Rook + Bishop + Knight powers.
-</p>
+      </p>
     </div>
   </div>
 </div>
@@ -475,15 +503,14 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 
 <div class="copyright-box">
   <div class="row"><div class="label">Project Name:</div>TheGrandChess9</div>
-  <div class="row"><div class="label">Owner:</div>Jitendra Kumar Surana & Rishab Surana</div>
-  <div class="row"><div class="label">Year:</div>2025</div>
-  <div class="row"><div class="label">Rights:</div>All game rules, pieces, UI, logic & branding are protected.</div>
+  <div class="row"><div class="label">Owner:</div>Jitendra Kumar Surana & Rishabh Surana</div>
+  <div class="row"><div class="label">Year:</div>2026</div>
+  <div class="row"><div class="label">Rights:</div>All game rules, pieces, UI, logic & branding are protected frameworks.</div>
 
-  <p><strong>© 2025 Jitendra Kumar Surana. All Rights Reserved.</strong></p>
+  <p><strong>© 2026 Jitendra Kumar Surana. All Rights Reserved.</strong></p>
 
   <div class="notice">
-    Unauthorized copying, distribution or commercial use without written permission
-    is strictly prohibited and may lead to legal action.
+    Unauthorized copying, distribution or commercial use without written permission is strictly prohibited and may lead to legal action.
   </div>
 </div>
 </div>
@@ -493,31 +520,54 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 <section id="contact" class="contact">
 <div class="container">
 <h3>Contact Information</h3>
-<p>📧 Email: amarjeetsurana@gmail.com</p>
+<p style="margin-top:10px;">📧 Email: amarjeetsurana@gmail.com</p>
 <p>📞 Phone: +91-6260314913 & 6232573618 </p>
 <p>📍 Location: Vidisha, PIN-464001, Madhya Pradesh, India</p>
 </div>
 </section>
 
 <!-- DISCLAIMER -->
-<section id="Disclaimer" class="Disclaimer">
+<section id="Disclaimer" class="Disclaimer" style="padding-top:20px;">
 <div class="container">
 <h3>DISCLAIMER</h3>
-<p style="text-align:justify;">This game is created solely for entertainment, skill development, and strategic experience. All rules, characters, pieces, and concepts used in TheGrandChess9 are entirely fictional, creative, and based on the developers’ imagination. It is not intended to disrespect, misrepresent, or make inappropriate comparisons to any real historical, religious, or cultural symbols. Users engage with the game at their own discretion, and the developers shall not be responsible for any kind of damage, misuse, or technical issues. The overall gameplay experience may vary depending on personal preferences.</p>
+<p style="text-align:justify; font-size:13px; color:#94a3b8; margin-top:10px;">This game is created solely for entertainment, skill development, and strategic experience. All rules, characters, pieces, and concepts used in TheGrandChess9 are entirely fictional, creative, and based on the developers’ imagination. Users engage with the game at their own discretion.</p>
 </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
 <p>Developed by Jitendra Kumar Surana & Rishabh Surana</p>
-<p>© 2025 TheGrandChess9</p>
+<p>© 2026 TheGrandChess9</p>
 </footer>
 
+<!-- SYSTEM SCRIPTS -->
 <script>
-  // Optimize for mobile performance
+  let deferredPrompt;
+  const installBtnWrapper = document.getElementById('installBtnWrapper');
+  const installBtn = document.getElementById('pwaInstallBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtnWrapper.style.display = 'block';
+  });
+
+  installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log(`User choice: ${outcome}`);
+          deferredPrompt = null;
+          installBtnWrapper.style.display = 'none';
+      }
+  });
+
+  window.addEventListener('appinstalled', () => {
+      installBtnWrapper.style.display = 'none';
+  });
+
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   
-  // Debounce function for performance
   function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -530,28 +580,21 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
     };
   }
   
-  // Optimized play button handler
   const playBtn = document.getElementById("playBtn");
   const gameWrapper = document.getElementById("gameWrapper");
   
-  playBtn.addEventListener("click", debounce(function () {
-    gameWrapper.style.display = "block";
-    
-    // Only load iframe when needed for mobile
-    if (isMobile) {
+  playBtn.addEventListener("click", debounce(function (e) {
+    if(!isMobile) {
+      e.preventDefault();
+      gameWrapper.style.display = "block";
       const iframe = gameWrapper.querySelector('iframe');
-      if (!iframe.src) {
+      if (!iframe.src || iframe.src === "") {
         iframe.src = "https://thegrandchess9-yfkl.onrender.com";
       }
+      document.getElementById("play").scrollIntoView({ behavior: "smooth" });
     }
-    
-    // smooth scroll to play section
-    document.getElementById("play").scrollIntoView({
-      behavior: "smooth"
-    });
   }, 200));
   
-  // Lazy load videos when they come into view
   const videos = document.querySelectorAll('video');
   const videoObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -566,17 +609,6 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
   videos.forEach(video => {
     videoObserver.observe(video);
   });
-  
-  // Performance monitoring
-  if (window.performance && window.performance.memory) {
-    setInterval(() => {
-      if (window.performance.memory.usedJSHeapSize > 50000000) { // 50MB
-        console.warn('High memory usage detected');
-        // Force garbage collection if available
-        if (window.gc) window.gc();
-      }
-    }, 30000);
-  }
 </script>
 
 </body>
