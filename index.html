@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- 👑 Title (Aisa rakhein jo log search karte hain) -->
     <title>TheGrandChess9 - Play Premium 9x9 Chess Game Online</title>
 
+    <!-- 📝 Meta Description (Google par link ke niche jo text dikhta hai) -->
     <meta name="description" content="Play the ultimate GrandChess9x9 game online. Experience new 9x9 chess boards, super chess modes, and play free with friends instantly. No download required!">
 
+    <!-- 🏷️ Keywords (Jo log search kar sakte hain) -->
     <meta name="keywords" content="chess, 9x9 chess, grandchess9, play chess online, super chess, free online chess, local multiplayer chess">
 
+    <!-- 🤖 Open Graph Tags (Jab aap WhatsApp/Facebook par link bhejenge toh badiya card banega) -->
     <meta property="og:title" content="TheGrandChess9 - Play Premium 9x9 Chess Game">
     <meta property="og:description" content="Experience the new version of chess with 9x9 boards and super modes. Play free now!">
     <meta property="og:image" content="img/Logo.png">
@@ -119,145 +123,13 @@ nav a:hover{color:var(--gold-light)}
   text-decoration:none;
   font-weight:600;
   transition:.3s ease;
-  margin:15px 5px;
+  margin:15px 0;
   touch-action:manipulation;
 }
 .play-btn:hover{
   background:var(--gold);
   color:#000;
   transform:scale(1.06);
-}
-
-/* ===== NEW INSTALL APP BUTTON ===== */
-.install-btn {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #b08d2f, #d6b45a);
-  color: #000;
-  border: 2px solid var(--gold);
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: .3s ease;
-  margin: 15px 5px;
-  touch-action: manipulation;
-  font-family: inherit;
-  box-shadow: 0 4px 15px rgba(176, 141, 47, 0.3);
-}
-.install-btn:hover {
-  background: transparent;
-  color: var(--gold);
-  transform: scale(1.06);
-  box-shadow: 0 6px 20px rgba(176, 141, 47, 0.5);
-}
-
-/* ===== NEW INSTALL MODAL POPUP ===== */
-.install-modal {
-  display: none; /* Default Hidden */
-  position: fixed;
-  z-index: 10000; /* Header ke bhi upar dikhega */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(15, 23, 42, 0.85); /* Dark layout mask */
-  backdrop-filter: blur(8px);
-  align-items: center;
-  justify-content: center;
-}
-.modal-content {
-  background: #1e293b;
-  border: 2px solid var(--gold);
-  color: var(--text);
-  margin: auto;
-  padding: 25px;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 480px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  position: relative;
-  animation: slideIn 0.3s ease-out;
-  font-family: Segoe UI, sans-serif;
-  text-align: left;
-}
-@keyframes slideIn {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-.close-modal-btn {
-  color: var(--muted);
-  position: absolute;
-  right: 20px;
-  top: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.close-modal-btn:hover {
-  color: var(--gold-light);
-}
-.modal-content h2 {
-  margin-top: 0;
-  color: var(--gold);
-  font-size: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 12px;
-  text-align: center;
-}
-.steps-container {
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-.step-item {
-  display: flex;
-  align-items: flex-start;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 12px;
-  border-radius: 8px;
-  border-left: 4px solid var(--gold);
-}
-.step-number {
-  font-weight: bold;
-  color: var(--gold-light);
-  min-width: 65px;
-  display: inline-block;
-}
-.step-item p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.4;
-  color: #e2e8f0;
-}
-.modal-footer {
-  text-align: center;
-  margin-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 15px;
-}
-.modal-footer p {
-  font-size: 14px;
-  color: #1dd1a1;
-  margin-bottom: 15px;
-}
-.success-close-btn {
-  background: var(--gold);
-  color: #000;
-  border: none;
-  padding: 10px 30px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.2s;
-  width: 100%;
-}
-.success-close-btn:hover {
-  background: var(--gold-light);
 }
 
 /* ===== FEATURES ===== */
@@ -430,6 +302,7 @@ footer{
 
 <body>
 
+<!-- HEADER -->
 <header>
 <div class="container nav">
   <div class="brand">
@@ -441,24 +314,33 @@ footer{
     <a href="#pieces">Pieces</a>
     <a href="#copyright">Copyright</a>
     <a href="#contact">Contact</a>
-    <a href="blog.html">Blog</a>
+	<a href="blog.html">Blog</a>
   </nav>
 </div>
 </header>
 
+<!-- HERO SECTION -->
 <section class="hero">
   <div class="container">
     <div class="hero-box">
       <img src="img/Logo.png" class="hero-logo" alt="TheGrandChess9 Logo">
       <h1 class="hero-title">Welcome to TheGrandChess9</h1>
       <p>
-        <a href="#play" class="play-btn" id="playBtn">
-          ▶ Play TheGrandChess9
+        <a href="https://thegrandchess9-yfkl.onrender.com" 
+           target="_blank"
+           class="play-btn" 
+           id="playBtn">
+           ▶ Play TheGrandChess9 Now
         </a>
-        <button id="installAppBtn" class="install-btn">
-          Install App "GrandChess9"
-        </button>
       </p>
+
+      <!-- 🔽 Play Now ke theek niche yeh naya Install Button jodh diya hai 🔽 -->
+      <div id="installBtnWrapper" style="text-align: center; display: none; margin: -5px 0 15px 0;">
+        <button id="pwaInstallBtn" style="padding: 12px 24px; background-color: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s;">
+          📱 Install 9x9 Chess App
+        </button>
+      </div>
+
       <p class="hero-tagline">
         A next-generation chess variant redefining strategy and creativity.
       </p>
@@ -466,47 +348,42 @@ footer{
   </div>
 </section>
 
-<div id="installModal" class="install-modal">
-    <div class="modal-content">
-        <span class="close-modal-btn">&times;</span>
-        <h2>How to Install GrandChess9</h2>
-        
-        <div class="steps-container">
-            <div class="step-item">
-                <span class="step-number">Step-1</span>
-                <p>TheGrandChess9.com open in Chrome in mobile</p>
-            </div>
-            <div class="step-item">
-                <span class="step-number">Step-2</span>
-                <p>Click the Play TheGrandChess9 Now</p>
-            </div>
-            <div class="step-item">
-                <span class="step-number">Step-3</span>
-                <p>Verify Gmail.com and login</p>
-            </div>
-            <div class="step-item">
-                <span class="step-number">Step-4</span>
-                <p>On the Right, click vertical three dots <strong style="font-size:18px;">&vellip;</strong></p>
-            </div>
-            <div class="step-item">
-                <span class="step-number">Step-5</span>
-                <p>Click <strong>Add to Home Screen</strong></p>
-            </div>
-            <div class="step-item">
-                <span class="step-number">Step-6</span>
-                <p>TheGrandChess9 <strong>"Install"</strong></p>
-            </div>
-        </div>
+<!-- 🔽 JavaScript Code (Ise isi page ke sabse neeche </body> se pehle jodein) 🔽 -->
+<script>
+let deferredPrompt;
+const installBtnWrapper = document.getElementById('installBtnWrapper');
+const installBtn = document.getElementById('pwaInstallBtn');
 
-        <div class="modal-footer">
-            <p>Close all and go to your screen. Your <strong>TheGrandChess9</strong> is installed! 🎉</p>
-            <button id="closeModalSuccessBtn" class="success-close-btn">Thanks</button>
-        </div>
-    </div>
-</div>
+// Browser check karega ki app install ho sakti hai ya nahi
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    // Play Now ke neeche button wale box ko show kar dein
+    installBtnWrapper.style.display = 'block';
+});
 
+// Jab user button par click kare
+installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User choice: ${outcome}`);
+        deferredPrompt = null;
+        // Click hone ke baad poore wrapper ko chhupa dein
+        installBtnWrapper.style.display = 'none';
+    }
+});
+
+// Install complete hone par button hide karein
+window.addEventListener('appinstalled', () => {
+    installBtnWrapper.style.display = 'none';
+});
+</script>
+
+<!-- PLAY GAME -->
 <section id="play">
   <div class="container" style="text-align:center">
+    <!-- iframe wrapper -->
     <div id="gameWrapper" style="display:none;">
       <iframe
         class="play-frame"
@@ -518,6 +395,7 @@ footer{
   </div>
 </section>
 
+<!-- FEATURES -->
 <section id="features">
 <div class="container">
 <h2 class="title">Game Features</h2>
@@ -550,6 +428,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 </div>
 </section>
 
+<!-- PIECES -->
 <section id="pieces">
 <div class="container">
 <h2 class="title">New Chess Pieces</h2>
@@ -562,7 +441,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
       <img src="img/bc.png" class="piece-icon" alt="Black Charioteer">
     </div>
     <div class="piece-body">
-      <video controls src="img/SARTHI.mp4" preload="none"></video>
+      <video controls src="img/Sarthi.mp4" preload="none"></video>
       <img src="img/SARTHI02.jpeg" alt="Charioteer" loading="lazy">
       <p style="text-align:justify;">
   <strong>The Charioteer</strong> is a divine guardian who serves as both charioteer and protective shield for the King from all sides. The Charioteer neither attacks anyone nor can anyone attack him. His sole purpose is to protect the King, forming an invisible circle of safety wherever the King stands. He exists not for battle, but to ensure the King’s security and stability. Because of this sacred role, the Charioteer becomes a unique symbol of divine protection, balance, and profound strategic depth within the game.
@@ -577,7 +456,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
       <img src="img/bs.png" class="piece-icon" alt="Black Sceptre">
     </div>
     <div class="piece-body">
-      <video controls src="img/Videoclip.mp4" preload="none"></video>
+      <video controls src="img/videoclip.mp4" preload="none"></video>
       <p style="text-align:justify;"><strong>Power of The Universe (MicroCosmos to Cosmos).: </strong></p>
       <img src="img/nandi01.jpg" alt="Sceptre" loading="lazy">
       <p style="text-align:justify;">
@@ -589,6 +468,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 </div>
 </section>
 
+<!-- COPYRIGHT -->
 <section id="copyright" class="copyright">
 <div class="container">
 <h2 class="title" style="color:#0f172a">Copyright & Legal</h2>
@@ -609,6 +489,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="contact">
 <div class="container">
 <h3>Contact Information</h3>
@@ -618,6 +499,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 </div>
 </section>
 
+<!-- DISCLAIMER -->
 <section id="Disclaimer" class="Disclaimer">
 <div class="container">
 <h3>DISCLAIMER</h3>
@@ -625,6 +507,7 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
 <p>Developed by Jitendra Kumar Surana & Rishabh Surana</p>
 <p>© 2025 TheGrandChess9</p>
@@ -668,32 +551,6 @@ Through this system, TheGrandChess9 transforms chess into more than a battle of 
     });
   }, 200));
   
-  // 📲 Added: Install Button and Modal Logic
-  const installAppBtn = document.getElementById("installAppBtn");
-  const installModal = document.getElementById("installModal");
-  const closeModalBtn = document.querySelector(".close-modal-btn");
-  const closeModalSuccessBtn = document.getElementById("closeModalSuccessBtn");
-
-  if (installAppBtn && installModal) {
-    installAppBtn.addEventListener("click", () => {
-      installModal.style.display = "flex"; // Show modal as a centered flex box
-    });
-  }
-
-  const hideInstallModal = () => {
-    installModal.style.display = "none";
-  };
-
-  if (closeModalBtn) closeModalBtn.addEventListener("click", hideInstallModal);
-  if (closeModalSuccessBtn) closeModalSuccessBtn.addEventListener("click", hideInstallModal);
-
-  // Close if user clicks background overlay
-  window.addEventListener("click", (e) => {
-    if (e.target === installModal) {
-      hideInstallModal();
-    }
-  });
-
   // Lazy load videos when they come into view
   const videos = document.querySelectorAll('video');
   const videoObserver = new IntersectionObserver((entries, observer) => {
