@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>TheGrandChess9 Blog</title>
-<link>https://thegrandchess9.com/</link>
-<description>Official blog of TheGrandChess9</description>
+    <title>TheGrandChess9 Blog &amp; Game Updates</title>
+    <link>https://thegrandchess9.com/</link>
+    <description>Official updates, strategies, and patch notes for TheGrandChess9 - The ultimate 9x9 chess evolution.</description>
+    <language>en-us</language>
+    <category>Games/Board Games/Chess</category>
+    <ttl>60</ttl> <!-- Time To Live: Readers will refresh feed every 60 minutes -->
+    <atom:link href="https://thegrandchess9.com/rss.xml" rel="self" type="application/rss+xml" />
 
-<item>
-<title>TheGrandChess9: A Powerful New Evolution</title>
-<link>https://thegrandchess9.com/blog.html</link>
-<description>
-TheGrandChess9 introduces a 9×9 board, Charioteer (Sārthi), and the powerful Sceptre piece...
-</description>
-<pubDate>Thu, 20 Feb 2026 12:00:00 GMT</pubDate>
-</item>
+    <!-- Website Logo for RSS Readers -->
+    <image>
+        <url>https://thegrandchess9.com/img/Logo.png</url>
+        <title>TheGrandChess9 Blog</title>
+        <link>https://thegrandchess9.com/</link>
+    </image>
 
-<!-- Add future blogs here -->
-<!--
-<item>
-<title>Blog 2 Title</title>
-<link>https://thegrandchess9.com/blog2.html</link>
-<description>Short description of Blog 2...</description>
-<pubDate>Fri, 21 Feb 2026 12:00:00 GMT</pubDate>
-</item>
--->
+    <!-- First Blog Item -->
+    <item>
+        <title>TheGrandChess9: A Powerful New Evolution</title>
+        <link>https://thegrandchess9.com/blog.html</link>
+        <guid isPermaLink="true">https://thegrandchess9.com/blog.html</guid>
+        <description>
+            Discover TheGrandChess9! Introducing a massive 9x9 board, the strategic Charioteer (Sārthi), and the game-changing power of the Sceptre piece. Learn how these new elements revolutionize traditional chess strategy.
+        </description>
+        <pubDate>Thu, 20 Feb 2026 12:00:00 GMT</pubDate>
+        <category>Game Mechanics</category>
+        <author>contact@thegrandchess9.com (TheGrandChess9 Team)</author>
+    </item>
+
+    <!-- Future Blogs Template (Just uncomment and fill when needed) -->
+    <!--
+    <item>
+        <title>Blog 2 Title</title>
+        <link>https://thegrandchess9.com/blog2.html</link>
+        <guid isPermaLink="true">https://thegrandchess9.com/blog2.html</guid>
+        <description>Short professional description of Blog 2...</description>
+        <pubDate>Fri, 21 Feb 2026 12:00:00 GMT</pubDate>
+        <category>Chess Strategy</category>
+        <author>contact@thegrandchess9.com (TheGrandChess9 Team)</author>
+    </item>
+    -->
 </channel>
 </rss>
