@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- 1. Homepage & Main Game Portal -->
   <url>
     <loc>https://thegrandchess9.com/</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>daily</changefreq> <!-- Kyunki game updates aur live activities badal sakti hain -->
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://thegrandchess9.com/img/Logo.png</image:loc>
+      <image:title>TheGrandChess9 - The Ultimate 9x9 Chess Board Game</image:title>
+      <image:caption>Official Logo and Interface of TheGrandChess9</image:caption>
+    </image:image>
   </url>
   
-  <!-- Blog pages -->
+  <!-- 2. Official Rules & Strategy Guide -->
+  <url>
+    <loc>https://thegrandchess9.com/Rules.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- 3. Main Blog Page -->
   <url>
     <loc>https://thegrandchess9.com/blog.html</loc>
     <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq> <!-- Blog update frequency weekly rakhna search engine ke liye accha hai -->
     <priority>0.8</priority>
   </url>
 
-  <!-- Add future blog pages below -->
+  <!-- Future Blog Pages Template (Just uncomment and fill when new blog goes live) -->
   <!--
   <url>
     <loc>https://thegrandchess9.com/blog2.html</loc>
-    <lastmod>2026-02-21</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   -->
 </urlset>
